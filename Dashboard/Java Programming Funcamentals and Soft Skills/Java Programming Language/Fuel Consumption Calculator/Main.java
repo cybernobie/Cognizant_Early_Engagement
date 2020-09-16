@@ -7,7 +7,7 @@ class Main {
         double gallon = liter * 0.2642;
         double mile = km * 0.6214;
 
-        double literPerKm  = (liter / km) * 100;
+        double literPerKm = (liter / km) * 100;
         double gallonPerKm = mile / gallon;
 
         System.out.println("Liters/100KM");
@@ -15,12 +15,14 @@ class Main {
         System.out.println("Miles/gallons");
         System.out.println(decimalFormat.format(gallonPerKm));
     }
+
     private static void test(double value) {
         if (value <= 0) {
             System.out.println((int) value + " is an Invalid Input");
             System.exit(0);
         }
     }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the no of liters to fill the tank");
