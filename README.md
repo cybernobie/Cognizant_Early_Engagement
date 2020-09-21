@@ -70,3 +70,4 @@
 
 - Insert Records - Department
 - Department name based on block number
+- Student and their Department Based on City

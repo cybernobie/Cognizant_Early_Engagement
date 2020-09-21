@@ -7,4 +7,4 @@ Insert the following records into the department table
 | 2 | IT | 3 |
 | 3 | SE | 3 |
 
-![database diagram](database.jpg)
+![database diagram](../database_1.jpg)
