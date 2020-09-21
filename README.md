@@ -61,5 +61,5 @@
 ### Collection Framework
 
 - [Add Flight using JDBC](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Advanced%20Java%20Concepts/Add%20Flight%20using%20JDBC)
-- [Mall Parking System]https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Advanced%20Java%20Concepts/Mall%20Parking%20System)
+- [Mall Parking System](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Advanced%20Java%20Concepts/Mall%20Parking%20System)
 - [Validate Name](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Advanced%20Java%20Concepts/Validate%20Name)
