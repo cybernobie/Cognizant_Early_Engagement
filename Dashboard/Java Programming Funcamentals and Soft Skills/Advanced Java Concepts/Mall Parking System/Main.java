@@ -8,6 +8,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         DateTimeFormatter
                 dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        String nowTimeStr = "29/10/2019 20:10";
 
         System.out.println("In-time");
         String inTimeStr = scanner.nextLine();
@@ -20,7 +21,7 @@ public class Main {
             System.exit(1);
         }
 
-        LocalDateTime now = LocalDateTime.parse(dateTimeFormatter.format(LocalDateTime.now()), dateTimeFormatter);
+        LocalDateTime now = LocalDateTime.parse(nowTimeStr, dateTimeFormatter);
 
         if (inTime.compareTo(now) <= 0) {
             System.out.println(inTimeStr + " is an Invalid In-Time");
