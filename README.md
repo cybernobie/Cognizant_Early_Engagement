@@ -73,3 +73,4 @@
 - [Student and their Department Based on City]()
 - [Car rental system - Create Table]()
 - [Car rental system - add new column]()
+- [car rental system - Insert values]()
