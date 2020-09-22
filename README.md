@@ -78,3 +78,4 @@
 - [Hunger eats - update table]()
 - [Hunger eats - Change the field name]()
 - [Delivery Partner details based on rating]()
+- [Car details based on type and name]()
