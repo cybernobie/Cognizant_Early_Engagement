@@ -74,3 +74,4 @@
 - [Car rental system - Create Table]()
 - [Car rental system - add new column]()
 - [car rental system - Insert values]()
+- [Hunger eats - change datatype]()
