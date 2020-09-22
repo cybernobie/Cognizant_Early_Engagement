@@ -76,3 +76,5 @@
 - [car rental system - Insert values]()
 - [Hunger eats - change datatype]()
 - [Hunger eats - update table]()
+- [Hunger eats - Change the field name]()
+- [Delivery Partner details based on rating]()
