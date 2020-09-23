@@ -86,3 +86,4 @@
 - [Rental details based on date]()
 - [Customer contact details]()
 - [No of time rented by each car]()
+- [Review of delivery partner based on rating]()
