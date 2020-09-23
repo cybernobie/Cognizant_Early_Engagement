@@ -85,3 +85,4 @@
 - [Hotels that took order based on month]()
 - [Rental details based on date]()
 - [Customer contact details]()
+- [No of time rented by each car]()
