@@ -88,3 +88,4 @@
 - [No of time rented by each car]()
 - [Review of delivery partner based on rating]()
 - [Total sale daywise]()
+- [Hotels not taken orders in a specific month]()
