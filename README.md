@@ -95,3 +95,9 @@
 - [Hotel_info](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hotel_info)
 - [Customer mail details](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Customer%20mail%20details)
 - [Order details](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Order%20details)
+
+## User Interface Design and Soft Skills
+
+### HTML5, CSS3
+
+- [Simple CALCULATOR]()
