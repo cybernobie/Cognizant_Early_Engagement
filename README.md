@@ -94,3 +94,4 @@
 - [Cars not taken for rent]()
 - [Hotel_info]()
 - [Customer mail details]()
+- [Order details]()
