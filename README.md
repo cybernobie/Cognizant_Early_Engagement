@@ -84,3 +84,4 @@
 - [Concatenating Details]()
 - [Hotels that took order based on month]()
 - [Rental details based on date]()
+- [Customer contact details]()
