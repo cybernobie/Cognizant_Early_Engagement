@@ -21,7 +21,9 @@ public class Main {
 
             stringJoiner.add(name)
                     .add(phoneNumber)
-                    .add(email);
+                    .add(email)
+                    .add(";");
+                    
             String record = stringJoiner.toString();
             FileManager.writeFile(file, record);
 

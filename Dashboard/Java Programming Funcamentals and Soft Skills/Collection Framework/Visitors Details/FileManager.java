@@ -1,7 +1,4 @@
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 @SuppressWarnings("unchecked")
 public class FileManager {
@@ -19,25 +16,32 @@ public class FileManager {
 
     public static void writeFile(File file, String record) {
         try {
-            FileOutputStream fileOutputStream = new FileOutputStream(file, true);
-            fileOutputStream.write(record.concat(";").getBytes());
+//            FileOutputStream fileOutputStream = new FileOutputStream(file, true);
+//            fileOutputStream.write(record.concat(";").getBytes());
+//            fileOutputStream.flush();
+//
+//            fileOutputStream.close();
+
+//            FileWriter fileWriter = new FileWriter(file, true);
+//            fileWriter.write(record);
+//            fileWriter.flush();
+
+            PrintWriter printWriter = new PrintWriter(new FileOutputStream(file, true));
+            printWriter.write(record);
+//            printWriter.print(record);
+//            printWriter.append(record);
+            printWriter.flush();
+            printWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static String[] readFile(File file) {
-        StringBuilder stringBuilder = new StringBuilder();
-
         try {
-            FileReader fileReader = new FileReader(file);
-            int n;
-
-            while ((n = fileReader.read()) != -1) {
-                stringBuilder.append((char) n);
-            }
-
-            return stringBuilder.toString().split(";");
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            String records = bufferedReader.readLine();
+            return records.split(";");
         } catch (IOException e) {
             e.printStackTrace();
         }
