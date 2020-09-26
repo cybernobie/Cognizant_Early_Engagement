@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACTB Connection Portal</title>
+    <style>
+        body {
+            background-color: #EED426;
+        }
+
+        h1 {
+            color: #006666;
+            font-family: verdana;
+            text-align: center;
+        }
+
+        div {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>ACTB Connection Portal</h1>
+    <table>
+        <tr>
+            <td>
+                <label for="custname">Customer Name</label>
+            </td>
+            <td>
+                <input type="text" id="custname" name="custname" placeholder="Enter the customer name" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="email">Customer Email</label>
+            </td>
+            <td>
+                <input type="email" id="email" name="email" placeholder="abc@gmail.com" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="mobile">Mobile Number</label>
+            </td>
+            <td>
+                <input type="text" id="mobile" name="mobile" placeholder="Enter the Mobile Number" maxlength="10"
+                    max="9999999999" min="7000000000" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="conntype">Type of Broadband</label>
+            </td>
+            <td>
+                <select name="conntype" id="connectionType" required>
+                    <option id="Pre" value="Pre">Pre</option>
+                    <option id="Post" value="Post">Post</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="scheme">Scheme Name</label>
+            </td>
+            <td>
+                <input type="radio" name="scheme" id="scheme1" value="Local" required>
+                <label for="scheme1">Local</label>
+                <input type="radio" name="scheme" id="scheme2" value="STD" required>
+                <label for="scheme2">STD</label>
+                <input type="radio" name="scheme" id="scheme3" value="FullTalkTime" required>
+                <label for="scheme3">FullTalkTime</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="duration">Connection Duration</label>
+            </td>
+            <td>
+                <input type="number" id="duration" name="duration" min="1" max="12" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="submit" name="submit" onclick="calculateRent()">Connection Bill Amount</button>
+            </td>
+            <td>
+                <button id="clear" name="clear" onclick="clearForm()">Reset</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="result" name="result"></div>
+            </td>
+        </tr>
+    </table>
+    <table id="rentalcost">
+        <caption>Rental Cost Table</caption>
+        <thead>
+            <tr>
+                <th>Connection Type</th>
+                <th>Call Limit</th>
+                <th>Monthly Rental</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Pre</td>
+                <td>500</td>
+                <td>75</td>
+            </tr>
+            <tr>
+                <td>Post</td>
+                <td>Unlimited</td>
+                <td>150</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        const _name = document.getElementById("custname");
+        const _email = document.getElementById("email");
+        const _mobile = document.getElementById("mobile");
+        const _connectionType = document.getElementById("connectionType");
+        const _scheme1 = document.getElementById("scheme1");
+        const _scheme2 = document.getElementById("scheme2");
+        const _scheme3 = document.getElementById("scheme3");
+        const _duration = document.getElementById("duration");
+        const _result = document.getElementById("result");
+
+        const emailPattern = /^.+@.+\..+$/;
+        const mobilePattern = /^[789]\d{9}$/;
+
+        function calculateRent() {
+            const name = _name.value;
+            const email = _email.value;
+            const mobile = _mobile.value;
+            const connectionType = _connectionType.value;
+            const scheme1 = _scheme1.checked;
+            const scheme2 = _scheme2.checked;
+            const scheme3 = _scheme3.checked;
+            const duration = _duration.value;
+
+            if (
+                name &&
+                emailPattern.test(email) &&
+                mobilePattern.test(mobile) &&
+                connectionType &&
+                (scheme1 || scheme2 || scheme3) &&
+                duration
+            ) {
+                var monthlyRental = 0;
+                var costPerMonth = 0;
+
+                if (connectionType === "Pre") {
+                    monthlyRental = 75;
+                } else if (connectionType === "Post") {
+                    monthlyRental = 150;
+                }
+
+                if (scheme1) {
+                    costPerMonth = 200;
+                } else if (scheme2) {
+                    costPerMonth = 350;
+                } else if (scheme3) {
+                    costPerMonth = 500;
+                }
+
+                const totalCost = (duration * costPerMonth) + monthlyRental;
+                _result.innerText = "The Total Monthly Rental Cost is Rs. " + totalCost;
+            }
+        }
+
+        function clearForm() {
+            _name.value = "";
+            _email.value = "";
+            _mobile.value = "";
+            _connectionType.value = "";
+            _scheme1.checked = false;
+            _scheme2.checked = false;
+            _scheme3.checked = false;
+            _duration.value = "";
+            _result.innerText = "";
+        }
+    </script>
+</body>
+
+</html>
