@@ -2,6 +2,17 @@
 
 ## Java Programming Fundamentals and Soft Skills
 
+### Code Challenge 
+
+- [Code Challenge 1 - Java Programming - Classes , Objects and Members](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Code%20Challange/Code%20Challenge%201%20-%20Java%20Programming%20-%20Classes%20%2C%20Objects%20and%20Members/ZeeZee%20Bank)
+- [Code Challenge 2 - Java Programming - Operators & Control flow statements](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Code%20Challange/Code%20Challenge%202%20-%20Java%20Programming%20-%20Operators%20%26%20Control%20flow%20statements/Numerology%20number)
+- [Code Challenge 3 - Java Programming - Packages, Strings, static, final, and Coding Conventions, Input-Output](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Code%20Challange/Code%20Challenge%203%20-%20Java%20Programming%20-%20Packages%2C%20Strings%2C%20static%2C%20final%2C%20and%20Coding%20Conventions%2C%20Input-Output/Substitution%20Cipher%20Technique)
+- [Code Challenge 4 - Java Programming - Inheritance & Polymorphism, Abstract Classes & Interfaces](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Code%20Challange/Code%20Challenge%203%20-%20Java%20Programming%20-%20Packages%2C%20Strings%2C%20static%2C%20final%2C%20and%20Coding%20Conventions%2C%20Input-Output/Substitution%20Cipher%20Technique)
+- [Code Challenge 5 - Java Programming - Collections Framework and Generics]()
+- [Code Challenge 6 - Java Programming - Nested Classes, enums, Multi-threading]()
+- [Code Challenge 7 - Java Programming - Date & Time API, Database Implementation & JDBC API]()
+- [Code Challenge 8 - Java Programming - Lambdas & Streams]()
+
 ### Java Programming Language
 
 - [Fuel Consumption Calculator](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Fuel%20Consumption%20Calculator)
@@ -100,5 +111,6 @@
 
 ### HTML5, CSS3
 
-- [Simple CALCULATOR]()
-- [ACTB Connection Portal]()
+- [Simple CALCULATOR](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Use%20Interface%20Design%20and%20Soft%20Skills/HTML5%2C%20CSS3/Simple%20CALCULATOR)
+- [ACTB Connection Portal](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Use%20Interface%20Design%20and%20Soft%20Skills/HTML5%2C%20CSS3/ACTB%20Connection%20Portal)
+- [Address Book - New](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Use%20Interface%20Design%20and%20Soft%20Skills/HTML5%2C%20CSS3/Address%20Book%20-%20New)
