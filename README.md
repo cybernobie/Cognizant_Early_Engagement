@@ -8,10 +8,10 @@
 - [Code Challenge 2 - Java Programming - Operators & Control flow statements](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Code%20Challange/Code%20Challenge%202%20-%20Java%20Programming%20-%20Operators%20%26%20Control%20flow%20statements/Numerology%20number)
 - [Code Challenge 3 - Java Programming - Packages, Strings, static, final, and Coding Conventions, Input-Output](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Code%20Challange/Code%20Challenge%203%20-%20Java%20Programming%20-%20Packages%2C%20Strings%2C%20static%2C%20final%2C%20and%20Coding%20Conventions%2C%20Input-Output/Substitution%20Cipher%20Technique)
 - [Code Challenge 4 - Java Programming - Inheritance & Polymorphism, Abstract Classes & Interfaces](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Code%20Challange/Code%20Challenge%203%20-%20Java%20Programming%20-%20Packages%2C%20Strings%2C%20static%2C%20final%2C%20and%20Coding%20Conventions%2C%20Input-Output/Substitution%20Cipher%20Technique)
-- [Code Challenge 5 - Java Programming - Collections Framework and Generics]()
-- [Code Challenge 6 - Java Programming - Nested Classes, enums, Multi-threading]()
+- [Code Challenge 5 - Java Programming - Collections Framework and Generics](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Code%20Challange/Code%20Challenge%205%20-%20Java%20Programming%20-%20Collections%20Framework%20and%20Generics/Batting%20Average)
+- [Code Challenge 6 - Java Programming - Nested Classes, enums, Multi-threading](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Code%20Challange/Code%20Challenge%206%20-%20Java%20Programming%20-%20Nested%20Classes%2C%20enums%2C%20Multi-threading/Grade%20Calculation)
 - [Code Challenge 7 - Java Programming - Date & Time API, Database Implementation & JDBC API]()
-- [Code Challenge 8 - Java Programming - Lambdas & Streams]()
+- [Code Challenge 8 - Java Programming - Lambdas & Streams](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Code%20Challange/Code%20Challenge%208%20-%20Java%20Programming%20-%20Lambdas%20%26%20Streams/Check%20Number%20Type)
 
 ### Java Programming Language
 
