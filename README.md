@@ -79,33 +79,47 @@
 
 ### Database Management
 
-- [Insert Records - Department](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Insert%20Records%20-%20Department)
-- [Department name based on block number](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Department%20name%20based%20on%20block%20number)
-- [Student and their Department Based on City](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Student%20and%20their%20Department%20Based%20on%20City)
-- [Car rental system - Create Table](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Car%20rental%20system%20-%20Create%20Table)
-- [Car rental system - add new column](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Car%20rental%20system%20-%20add%20new%20column)
-- [car rental system - Insert values](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/car%20rental%20system%20-%20Insert%20values)
-- [Hunger eats - change datatype](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hunger%20eats%20-%20change%20datatype)
-- [Hunger eats - update table](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hunger%20eats%20-%20update%20table)
-- [Hunger eats - Change the field name](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hunger%20eats%20-%20Change%20the%20field%20name)
-- [Delivery Partner details based on rating](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Delivery%20Partner%20details%20based%20on%20rating)
-- [Car details based on type and name](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Car%20details%20based%20on%20type%20and%20name)
-- [Customers having gmail id](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Customers%20having%20gmail%20id)
-- [Car & owner details based on car type](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Car%20%26%20owner%20details%20based%20on%20car%20type)
-- [Concatenating Details](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Concatenating%20Details)
-- [Hotels that took order based on month](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hotels%20that%20took%20order%20based%20on%20month)
-- [Rental details based on date](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Rental%20details%20based%20on%20date)
-- [Customer contact details](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Customer%20contact%20details)
-- [No of time rented by each car](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/No%20of%20time%20rented%20by%20each%20car)
-- [Review of delivery partner based on rating](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Review%20of%20delivery%20partner%20based%20on%20rating)
-- [Total sale daywise](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Total%20sale%20daywise)
-- [Hotels not taken orders in a specific month](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hotels%20not%20taken%20orders%20in%20a%20specific%20month)
-- [Credential details](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hotels%20not%20taken%20orders%20in%20a%20specific%20month)
-- [Maruthi car owner details](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Maruthi%20car%20owner%20details)
-- [Cars not taken for rent](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Cars%20not%20taken%20for%20rent)
-- [Hotel_info](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hotel_info)
-- [Customer mail details](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Customer%20mail%20details)
-- [Order details](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Order%20details)
+#### Code Challenge
+
+- [Code Challenge 1 - RDBMS Select Statements](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Code%20Challenge/Code%20Challenge%201%20-%20RDBMS%20Select%20Statements/Patient%20Appointment%20Details%20based%20on%20reason)
+- [Code Challenge 2 - RDBMS DDL & DML](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Code%20Challenge/Code%20Challenge%202%20-%20RDBMS%20DDL%20%26%20DML)
+- [Code Challenge 3 - Functions & SubQueries](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Code%20Challenge/Code%20Challenge%203%20-%20Functions%20%26%20SubQueries/Patient%20Appointment%20details%20Based%20On%20Month)
+- [Code Challenge 4 - Function-Scalar & Aggregate](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Code%20Challenge/Code%20Challenge%204%20-%20Function-Scalar%20%26%20Aggregate/Minimum%20%26%20Maximum%20Discount%20Amount)
+
+#### Hands-On
+
+##### SQL Basics with DML and DDL Statements
+
+- [Insert Records - Department](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Insert%20Records%20-%20Department)
+- [Department name based on block number](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Department%20name%20based%20on%20block%20number)
+- [Student and their Department Based on City](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Student%20and%20their%20Department%20Based%20on%20City)
+- [Car rental system - Create Table](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Car%20rental%20system%20-%20Create%20Table)
+- [Car rental system - add new column](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Car%20rental%20system%20-%20add%20new%20column)
+- [car rental system - Insert values](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/car%20rental%20system%20-%20Insert%20values)
+- [Hunger eats - change datatype](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Hunger%20eats%20-%20change%20datatype)
+- [Hunger eats - update table](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Hunger%20eats%20-%20update%20table)
+- [Hunger eats - Change the field name](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Hunger%20eats%20-%20Change%20the%20field%20name)
+- [Delivery Partner details based on rating](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Delivery%20Partner%20details%20based%20on%20rating)
+- [Car details based on type and name](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Car%20details%20based%20on%20type%20and%20name)
+- [Customers having gmail id](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Customers%20having%20gmail%20id)
+- [Car & owner details based on car type](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Car%20%26%20owner%20details%20based%20on%20car%20type)
+
+##### Querying Database - Operators, Aggregate, String, Date Functions
+
+- [Concatenating Details](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Concatenating%20Details)
+- [Hotels that took order based on month](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Hotels%20that%20took%20order%20based%20on%20month)
+- [Rental details based on date](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Rental%20details%20based%20on%20date)
+- [Customer contact details](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Customer%20contact%20details)
+- [No of time rented by each car](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/No%20of%20time%20rented%20by%20each%20car)
+- [Review of delivery partner based on rating](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Review%20of%20delivery%20partner%20based%20on%20rating)
+- [Total sale daywise](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Total%20sale%20daywise)
+- [Hotels not taken orders in a specific month](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Hotels%20not%20taken%20orders%20in%20a%20specific%20month)
+- [Credential details](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Hotels%20not%20taken%20orders%20in%20a%20specific%20month)
+- [Maruthi car owner details](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Maruthi%20car%20owner%20details)
+- [Cars not taken for rent](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Cars%20not%20taken%20for%20rent)
+- [Hotel_info](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Hotel_info)
+- [Customer mail details](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Customer%20mail%20details)
+- [Order details](https://github.com/RitamChakraborty/Cognizant_Early_Engagement/tree/master/Dashboard/Database%20Management/Hands-On/SQL%20Basics%20with%20DML%20and%20DDL%20Statements/Order%20details)
 
 ## User Interface Design and Soft Skills
 
