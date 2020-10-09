@@ -17,12 +17,15 @@ Assume the minimum discount offer is in the form of Integer.
     shoe,5000,10
     watch,6000,15
     laptop,35000,5
-    Sample Output 1:
+
+> Sample Output 1:
     shoe
 
 ### Explanation
 
 the discount on the mobile is 2000, the discount on the shoe is 500, the discount on the watch is 900 and the discount on the laptop is 1750. So the discount on the shoe is the minimum.
+
+---
 
 > Sample Input 2:
 

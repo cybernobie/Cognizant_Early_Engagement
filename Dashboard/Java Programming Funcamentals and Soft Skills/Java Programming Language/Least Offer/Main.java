@@ -24,6 +24,8 @@ class Product implements Comparable<Product> {
     public String toString() {
         return name;
     }
+
+    
 }
 
 class Main {
@@ -42,12 +44,6 @@ class Main {
             products.add(product);
         }
 
-        double minimumDiscount = Collections.min(products);
-
-        for (Product product : products) {
-            if (product.getDiscountPrice() == minimumDiscount) {
-                System.out.println(product);
-            }
-        }
+        
     }
 }

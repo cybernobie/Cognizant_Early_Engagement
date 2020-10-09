@@ -63,3 +63,6 @@ Display the Student name and Grade obtained by each student as shown in the samp
     David:10:8:9:40:5
     Adam:90:80:90:50:75
     Rohit:99:99:99:99:99
+
+    1
+    Jeba:100:80:90:40:55
