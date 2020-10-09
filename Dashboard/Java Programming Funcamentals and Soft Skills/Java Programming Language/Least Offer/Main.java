@@ -24,8 +24,6 @@ class Product implements Comparable<Product> {
     public String toString() {
         return name;
     }
-
-    
 }
 
 class Main {
@@ -44,6 +42,8 @@ class Main {
             products.add(product);
         }
 
-        
+        products.stream()
+                .filter((product) -> product.getDiscountPrice().equals(Collections.min(products).getDiscountPrice()))
+                .forEach(System.out::println);
     }
 }
