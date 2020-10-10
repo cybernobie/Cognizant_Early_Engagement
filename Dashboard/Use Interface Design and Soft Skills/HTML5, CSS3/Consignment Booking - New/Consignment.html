@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Cargo Service</title>
+    <style>
+        body {
+            background-color: #CEF6CE;
+            font-size: 15px;
+        }
+
+        h1 {
+            color: #08088A;
+            font-family: verdana;
+            text-align: center;
+        }
+
+        #costtable {
+            font-size: 15px;
+            text-align: center;
+            float: right;
+            border-style: solid;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td colspan="2">
+                <h1>Air Cargo Service</h1>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="accnumber">Customer Logistics Account Number</label>
+            </td>
+            <td>
+                <input type="text" id="accnumber" name="accnumber" pattern="^[a-zA-Z]{4}_\d{3}$"
+                    placeholder="Enter the Unique ID" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="mobile">Mobile</label>
+            </td>
+            <td>
+                <input type="text" id="mobile" name="mobile" min="7000000000" max="9999999999" pattern="^[7-9]\d{9}$"
+                    required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="emailid">Email-ID</label>
+            </td>
+            <td>
+                <input type="text" id="emailid" name="emailid" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="item">Item to be Shipped</label>
+            </td>
+            <td>
+                <input type="text" id="item" name="item" pattern="^[a-zA-Z ]+$" placeholder="Item Name" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="itemtype">Item Category</label>
+            </td>
+            <td>
+                <select name="itemtype" id="itemtype" required>
+                    <option name="category" id="category" value="Electronics">Electronics</option>
+                    <option name="category" id="category" value="Attires">Attires</option>
+                    <option name="category" id="category" value="Toys">Toys</option>
+                    <option name="category" id="category" value="Non Poisonous Food">Non Poisonous Food</option>
+                </select>
+                <!-- <select name="itemtype" id="itemtype" required>
+                    <option name="electronics" id="electronics" value="Electronics">Electronics</option>
+                    <option name="attires" id="attires" value="Attires">Attires</option>
+                    <option name="toys" id="toys" value="Toys">Toys</option>
+                    <option name="nonpoisonousfood" id="nonpoisonousfood" value="Non Poisonous Food">Non Poisonous Food
+                    </option>
+                </select> -->
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="address">Shipment Address</label>
+            </td>
+            <td>
+                <textarea name="address" id="address" cols="13" rows="5" required></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="location">Location</label>
+            </td>
+            <td>
+                <select name="location" id="location" required>
+                    <option name="category" id="category" value="London - 1800">London - 1800</option>
+                    <option name="category" id="category" value="Singapore - 1400">Singapore - 1400</option>
+                    <option name="category" id="category" value="New York - 3100">New York - 3100</option>
+                    <option name="category" id="category" value="Mexico City - 3300">Mexico City - 3300</option>
+                    <option name="category" id="category" value="Tokyo - 2800">Tokyo - 2800</option>
+                </select>
+                <!-- <select id="category" name="location" required>
+                    <option value="London - 1800">London - 1800</option>
+                    <option value="Singapore - 1400">Singapore - 1400</option>
+                    <option value="New York - 3100">New York - 3100</option>
+                    <option value="Mexico City - 3300">Mexico City - 3300</option>
+                    <option value="Tokyo - 2800">Tokyo - 2800</option>
+                </select> -->
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="weight">Weight in Kilograms</label>
+            </td>
+            <td>
+                <input type="number" id="kilogramval" name="weight" min=5 max=36 value="5" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Service Type</label>
+            </td>
+            <td>
+                <input type="radio" name="servicetype" id="type1" value="Normal" required>
+                <label for="type1">Normal</label>
+                <input type="radio" name="servicetype" id="type2" value="Express" required>
+                <label for="type2">Express</label>
+                <input type="radio" name="servicetype" id="type3" value="Platinum" required>
+                <label for="type3">Platinum</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" id="submit" name="submit" value="Book My Consignment" onclick="costcalculation()">
+            </td>
+            <td>
+                <input type="reset" id="clear" name="clear" onclick="clearform()">
+            </td>
+        </tr>
+    </table>
+    <div name="result" id="result"></div>
+    <table name="Shipment Cost Chart" id="costtable" value="costtable" border="1">
+        <caption>Shipment Cost Chart</caption>
+        <thead>
+            <tr>
+                <th>ServiceType</th>
+                <th>Weight (in kg)</th>
+                <th>Amount (per Kg)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="3">Normal</td>
+                <td>5 to below 15</td>
+                <td>125</td>
+            </tr>
+            <tr>
+                <td>15 to 25</td>
+                <td>175</td>
+            </tr>
+            <tr>
+                <td>Above 25 to 36</td>
+                <td>200</td>
+            </tr>
+            <tr>
+                <td rowspan="3">Express</td>
+                <td>5 to below 15</td>
+                <td>175</td>
+            </tr>
+            <tr>
+                <td>15 to 25</td>
+                <td>225</td>
+            </tr>
+            <tr>
+                <td>Above 25 to 36</td>
+                <td>250</td>
+            </tr>
+            <tr>
+                <td rowspan="3">Platinum</td>
+                <td>5 to below 15</td>
+                <td>225</td>
+            </tr>
+            <tr>
+                <td>15 to 25</td>
+                <td>375</td>
+            </tr>
+            <tr>
+                <td>Above 25 to 36</td>
+                <td>400</td>
+            </tr>
+        </tbody>
+    </table>
+    <button onclick="test()">Test</button>
+    <script type="text/javascript" name="costcalculation()">
+        const _account = document.getElementById("accnumber");
+        const _mobile = document.getElementById("mobile");
+        const _email = document.getElementById("emailid");
+        const _item = document.getElementById("item");
+        const _itemType = document.getElementById("itemtype");
+        const _address = document.getElementById("address");
+        const _destination = document.getElementById("location");
+        const _weight = document.getElementById("kilogramval");
+        const _normal = document.getElementById("type1");
+        const _express = document.getElementById("type2");
+        const _platinum = document.getElementById("type3");
+        const _result = document.getElementById("result");
+
+        function test() {
+            const locations = ["London - 1800", "Singapore - 1400",
+                "New York - 3100", "Mexico City - 3300", "Tokyo - 2800"];
+            const services = ["Normal", "Express", "Platinum"];
+            const weights = ["5 to below 15", "15 to 25", "Above 25 to 36"];
+
+            for (let location of locations) {
+                for (let service of services) {
+                    for (let weight of weights) {
+                        let tax = 0;
+
+                        if (location === "London - 1800") {
+                            tax = 10;
+                        } else if (location === "Singapore - 1400") {
+                            tax = 0;
+                        } else if (location === "New York - 3100") {
+                            tax = 15;
+                        } else if (location === "Mexico City - 3300") {
+                            tax = 0;
+                        } else if (location === "Tokyo - 2800") {
+                            tax = 20;
+                        }
+
+                        amountPerKg = 0
+
+                        if (service === "Normal") {
+                            if (weight === "5 to below 15") {
+                                amountPerKg = 125;
+                            } else if (weight === "15 to 25") {
+                                amountPerKg = 175;
+                            } else if (weight === "Above 25 to 36") {
+                                amountPerKg = 200;
+                            }
+                        } else if (service === "Express") {
+                            if (weight === "5 to below 15") {
+                                amountPerKg = 175;
+                            } else if (weight === "15 to 25") {
+                                amountPerKg = 225;
+                            } else if (weight === "Above 25 to 36") {
+                                amountPerKg = 250;
+                            }
+                        } else if (service === "Platinum") {
+                            if (weight === "5 to below 15") {
+                                amountPerKg = 225;
+                            } else if (weight === "15 to 25") {
+                                amountPerKg = 375;
+                            } else if (weight === "Above 25 to 36") {
+                                amountPerKg = 400;
+                            }
+                        }
+
+                        let start = 0;
+                        let end = 0;
+
+                        if (weight === "5 to below 15") {
+                            start = 5;
+                            end = 14;
+                        } else if (weight === "15 to 25") {
+                            start = 15;
+                            end = 25;
+                        } else if (weight === "Above 25 to 36") {
+                            start = 26;
+                            end = 36;
+                        }
+
+                        for (let i = start; i <= end; ++i) {
+                            invoiceCost = (i * amountPerKg);
+                            totalTax = (invoiceCost * tax) / 100.0;
+                            shipmentCost = invoiceCost + totalTax;
+                            shipmentCost = Math.ceil(shipmentCost);
+
+                            console.log(`Location: ${location}`);
+                            console.log(`Service type: ${service}`);
+                            console.log(`Weight range: ${weight}`);
+                            console.log(`Weight: ${i}`);
+                            console.log(`Amount (per kg): ${amountPerKg}`);
+                            console.log(`Tax: ${tax}`);
+                            console.log(`Invoice cost: ${invoiceCost}`);
+                            console.log(`Total tax: ${totalTax}`);
+                            console.log(`Amount to be paid: ${shipmentCost}`);
+
+
+                            // Setting values for the html elements
+                            _destination.value = location;
+                            _weight.value = i;
+
+                            if (service === "Normal") {
+                                _normal.checked = true;
+                                _express.checked = false;
+                                _platinum.checked = false;  
+                            } else if (service === "Express") {
+                                _normal.checked = false;
+                                _express.checked = true;
+                                _platinum.checked = false;
+                            } else if (service === "Platinum") {
+                                _normal.checked = false;
+                                _express.checked = false;
+                                _platinum.checked = true;
+                            }
+
+                            let result = costcalculation();
+
+                            console.log(`Result from calculation: ${result}`);
+
+                            if (shipmentCost === result) {
+                                console.log("Test passed");
+                            } else {
+                                console.log("Test failed ###############");
+                                break;
+                            }
+
+                            console.log("------------------------------");
+                            console.log();
+                        }
+                    }
+                }
+            }
+        }
+
+        function costcalculation() {
+            const accountPattern = /^[a-zA-Z]{4}_\d{3}$/;
+            const mobilePattern = /^[789]\d{9}$/;
+            const emailPattern = /^.+@.+\..+$/;
+            const itemPattern = /^[a-zA-Z ]+$/;
+
+            const account = _account.value;
+            const mobile = _mobile.value;
+            const email = _email.value;
+            const item = _item.value;
+            const itemType = _itemType.value;
+            const address = _address.value;
+            const destination = _destination.value;
+            const weight = _weight.value;
+            const normal = _normal.checked;
+            const express = _express.checked;
+            const platinum = _platinum.checked;
+
+            // console.log(`account: ${account}`);
+            // console.log(`mobile: ${mobile}`);
+            // console.log(`email: ${email}`);
+            // console.log(`item: ${item}`);
+            // console.log(`itemType: ${itemType}`);
+            // console.log(`address: ${address}`);
+            // console.log(`destination: ${destination}`);
+            // console.log(`account: ${account}`);
+            // console.log(`weight: ${weight}`);
+            // console.log(`normal: ${normal}`);
+            // console.log(`express: ${express}`);
+            // console.log(`platinum: ${platinum}`);
+
+            if (
+                destination &&
+                weight &&
+                weight >= 5 &&
+                weight <= 36 &&
+                (normal || express || platinum)
+            ) {
+                var amountPerKg = 0;
+
+                if (normal) {
+                    if (weight >= 5 && weight < 15) {
+                        amountPerKg = 125;
+                    } else if (weight >= 15 && weight <= 25) {
+                        amountPerKg = 175;
+                    } else if (weight > 25 && weight <= 36) {
+                        amountPerKg = 200;
+                    }
+                } else if (express) {
+                    if (weight >= 5 && weight < 15) {
+                        amountPerKg = 175;
+                    } else if (weight >= 15 && weight <= 25) {
+                        amountPerKg = 225;
+                    } else if (weight > 25 && weight <= 36) {
+                        amountPerKg = 200;
+                    }
+                } else if (platinum) {
+                    if (weight >= 5 && weight < 15) {
+                        amountPerKg = 225;
+                    } else if (weight >= 15 && weight <= 25) {
+                        amountPerKg = 375;
+                    } else if (weight > 25 && weight <= 36) {
+                        amountPerKg = 400;
+                    }
+                }
+
+                var tax = 0;
+
+                if (destination === "London - 1800") {
+                    tax = 10;
+                } else if (destination === "New York - 3100") {
+                    tax = 15;
+                } else if (destination === "Tokyo - 2800") {
+                    tax = 20;
+                }
+
+                const invoicePrice = (weight * amountPerKg);
+                const shipmentCost = Math.ceil(invoicePrice + (invoicePrice * tax / 100));
+
+                _result.innerHTML = "Your shipment has been accepted. Amount to be paid is Rs." + shipmentCost;
+                return shipmentCost;
+            }
+        }
+
+        function clearform() {
+            _account.value = "";
+            _mobile.value = "";
+            _email.value = "";
+            _item.value = "";
+            _itemType.value = "";
+            _address.value = "";
+            _destination.value = "";
+            _weight.value = "";
+            _normal.checked = false;
+            _express.checked = false;
+            _platinum.checked = false;
+            document.getElementById("result").innerText = "";
+        }
+
+        // function costcalculation() {
+        //     var weight = document.getElementById("kilogramval").value;
+        //     weight = parseFloat(weight);
+
+        //     var servicetype;
+
+        //     var radios = document.getElementsByName("servicetype");
+
+        //     for (var i = 0; i < radios.length; i++) {
+        //         if ((radios[i].checked) == true) {
+        //             servicetype = radios[i].value;
+        //         }
+        //         // get value, set checked flag or do whatever you need to
+
+        //     }
+
+        //     var amt;
+        //     if (servicetype == "Normal") {
+        //         if (weight >= 5 && weight < 15) {
+        //             amt = 125;
+        //         }
+        //         else if (weight >= 15 && weight <= 25) {
+        //             amt = 175;
+        //         }
+        //         else {
+        //             amt = 200;
+        //         }
+        //     }
+        //     else if (servicetype == "Express") {
+        //         if (weight >= 5 && weight < 15) {
+        //             amt = 175;
+        //         }
+        //         else if (weight >= 15 && weight <= 25) {
+        //             amt = 225;
+        //         }
+        //         else {
+        //             amt = 250;
+        //         }
+        //     }
+        //     else {
+        //         if (weight >= 5 && weight < 15) {
+        //             amt = 225;
+        //         }
+        //         else if (weight >= 15 && weight <= 25) {
+        //             amt = 375;
+        //         }
+        //         else {
+        //             amt = 400;
+        //         }
+        //     }
+        //     amt = parseFloat(amt);
+        //     var tax;
+        //     var bothElements = document.querySelectorAll("[id='category']");
+        //     // console.log(bothElements);
+        //     var e = bothElements[0];
+        //     var valuez = e.options[e.selectedIndex].value;
+
+        //     if (valuez == "London - 1800") {
+        //         tax = (weight * amt * 10) / 100;
+        //     }
+        //     else if (valuez == "Singapore - 1400") {
+        //         tax = 0;
+        //     }
+        //     else if (valuez == "New York - 3100") {
+        //         tax = (weight * amt * 15) / 100;
+        //     }
+        //     else if (valuez == "Mexico City - 3300") {
+        //         tax = 0;
+        //     }
+        //     else {
+        //         tax = (weight * amt * 20) / 100;
+        //     }
+        //     tax = parseFloat(tax);
+        //     var shipment_cost = (weight * amt) + tax;
+        //     shipment_cost = parseFloat(shipment_cost);
+        //     document.getElementById("result").innerHTML = "Your shipment has been accepted. Amount to be paid is Rs." + Math.ceil(shipment_cost);
+        // }
+    </script>
+</body>
+
+</html>
