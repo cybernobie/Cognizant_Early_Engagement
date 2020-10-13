@@ -20,7 +20,7 @@ public class TestApplication {
 
         AddressBook.Address address = new AddressBook.Address();
         address.setName(house);
-        address.setState(street);
+        address.setStreet(street);
         address.setCity(city);
         address.setState(state);
 
