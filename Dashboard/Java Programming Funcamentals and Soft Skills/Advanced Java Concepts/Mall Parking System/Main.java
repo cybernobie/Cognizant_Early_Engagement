@@ -23,7 +23,7 @@ public class Main {
 
         LocalDateTime now = LocalDateTime.parse(nowTimeStr, dateTimeFormatter);
 
-        if (inTime.compareTo(now) <= 0) {
+        if (inTime.compareTo(now) >= 0) {
             System.out.println(inTimeStr + " is an Invalid In-Time");
             System.exit(1);
         }
