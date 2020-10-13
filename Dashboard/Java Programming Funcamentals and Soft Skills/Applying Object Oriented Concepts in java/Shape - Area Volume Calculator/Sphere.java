@@ -16,6 +16,6 @@ public class Sphere extends Shape implements Spatial {
 
     @Override
     public double volume() {
-        return (4.0 * Math.PI * Math.pow(radius, 3)) / 3;
+        return (4.0 * Math.PI * radius * radius * radius) / 3;
     }
 }
