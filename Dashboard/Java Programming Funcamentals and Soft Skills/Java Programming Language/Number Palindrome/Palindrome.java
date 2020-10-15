@@ -27,7 +27,7 @@ public class Palindrome {
         if (num < 0) {
             System.out.println("Invalid Input");
         } else {
-            if (isPalindrome1(num)) {
+            if (isPalindrome(num)) {
                 System.out.println("Palindrome");
             } else {
                 System.out.println("Not a Palindrome");
