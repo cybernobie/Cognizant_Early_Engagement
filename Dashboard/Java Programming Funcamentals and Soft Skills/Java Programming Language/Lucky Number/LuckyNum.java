@@ -17,7 +17,7 @@ public class LuckyNum {
                 sum += Character.digit(ch, 10);
             }
 
-            System.out.println(sum);
+         //   System.out.println(sum);
 
             if (sum % 3 == 0 || sum % 5 == 0 || sum % 7 == 0) {
                 System.out.println("Lucky Number");
