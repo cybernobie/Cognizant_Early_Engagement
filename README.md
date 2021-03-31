@@ -106,7 +106,7 @@
 
 ##### Querying Database - Operators, Aggregate, String, Date Functions
 
-- [Concatenating Details](./Dashboard%5CDatabase%20Management%5CHands-On%5CQuerying%20Database%20-%20Operators%2C%20%20Aggregate%2C%20String%2C%20Date%20Functions%5CConcatenating%20Details)
+- [Concatenating Details](./Dashboard/Database%20Management/Hands-On/Querying%20Database%20-%20Operators%2C%20%20Aggregate%2C%20String%2C%20Date%20Functions/Concatenating%20Details)
 - [Hotels that took order based on month](./Dashboard/Database%20Management/Hands-On/Querying%20Database%20-%20Operators%2C%20%20Aggregate%2C%20String%2C%20Date%20Functions/Hotels%20that%20took%20order%20based%20on%20month)
 - [Rental details based on date](./Dashboard/Database%20Management/Hands-On/Querying%20Database%20-%20Operators%2C%20%20Aggregate%2C%20String%2C%20Date%20Functions/Rental%20details%20based%20on%20date)
 - [Customer contact details](./Dashboard/Database%20Management/Hands-On/Querying%20Database%20-%20Operators%2C%20%20Aggregate%2C%20String%2C%20Date%20Functions/Customer%20contact%20details)
