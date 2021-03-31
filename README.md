@@ -120,6 +120,7 @@
 - [Hotel_info](./Dashboard/Database%20Management/Hands-On/Querying%20Database%20-%20Operators%2C%20%20Aggregate%2C%20String%2C%20Date%20Functions/Hotel_info)
 - [Customer mail details](./Dashboard/Database%20Management/Hands-On/Querying%20Database%20-%20Operators%2C%20%20Aggregate%2C%20String%2C%20Date%20Functions/Customer%20mail%20details)
 - [Order details](./Dashboard/Database%20Management/Hands-On/Querying%20Database%20-%20Operators%2C%20%20Aggregate%2C%20String%2C%20Date%20Functions/Order%20details)
+- [Customer using HDFC bank](./Dashboard/Database%20Management/Hands-On/Querying%20Database%20-%20Operators%2C%20%20Aggregate%2C%20String%2C%20Date%20Functions/Customer%20using%20HDFC%20bank)
 
 ## User Interface Design and Soft Skills
 
