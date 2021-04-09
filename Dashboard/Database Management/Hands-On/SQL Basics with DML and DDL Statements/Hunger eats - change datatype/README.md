@@ -6,4 +6,4 @@ Write a query to change the data type of the field customer_id in Customers tabl
 
 *Note: Letters in bold represents the attribute name*
 
-![database diagram](database_3.png)
+![database diagram](../database_3.png)
