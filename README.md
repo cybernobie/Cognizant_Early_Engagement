@@ -68,12 +68,21 @@
 - [Visitors Details](./Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Collection%20Framework/Visitors%20Details)
 - [Retrieving Data from file](./Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Collection%20Framework/Retriving%20Data%20from%20file)
 - [Presist Employee](./Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Collection%20Framework/Persist%20Employee)
+-  [Auditing](./Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Collection%20Framework/Auditing)
+- [Travel Agency](./Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Collection%20Framework/Travel%20Agency)
+- [Employee Loan Eligibility](./Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Collection%20Framework/Employee%20Loan%20Eligibility)
+- [Placement Enrollement Count](./Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Collection%20Framework/Placement%20Enrollment%20Count)
+- [Fruit Basket Estimation](./Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Collection%20Framework/Fruit%20Basket%20Estimation)
+- [Employee Promotion](./Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Collection%20Framework/)
+- [Search for Train- JDBC](./Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Collection%20Framework/)
+- [Player Selection System- JDBC](./Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Collection%20Framework/)
 
 ### Collection Framework
 
 - [Add Flight using JDBC](./Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Advanced%20Java%20Concepts/Add%20Flight%20using%20JDBC)
 - [Mall Parking System](./Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Advanced%20Java%20Concepts/Mall%20Parking%20System)
 - [Validate Name](./Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Advanced%20Java%20Concepts/Validate%20Name)
+
 
 ## Software Fundamentals and Soft Skills
 
