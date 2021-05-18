@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- Engine abstract bean -->
+	<bean id="engine" class="com.cts.engineAnalysis.Engine" abstract="true" />
+
+	<!-- Petrol Engine bean -->
+	<bean id="petrolEngine" class="com.cts.engineAnalysis.PetrolEngine" parent="engine">
+		<property name="torque" value="300" />
+		<property name="rpm" value="4000" />
+		<property name="fuel" value="petrol" />
+	</bean>
+
+	<!-- Diesel Engine bean -->
+	<bean id="dieselEngine" class="com.cts.engineAnalysis.DieselEngine" parent="engine">
+		<property name="torque" value="500" />
+		<property name="rpm" value="3000" />
+		<property name="fuel" value="diesel" />
+	</bean>
+
+	<!-- Petrol Car bean -->
+	<bean id="petrolCar" class="com.cts.engineAnalysis.Car">
+		<constructor-arg value="Honda" />
+		<constructor-arg ref="petrolEngine" />
+	</bean>
+
+	<!-- Diesel Car bean -->
+	<bean id="dieselCar" class="com.cts.engineAnalysis.Car">
+		<constructor-arg value="Suzuki" />
+		<constructor-arg ref="dieselEngine" />
+	</bean>
+
+</beans>
