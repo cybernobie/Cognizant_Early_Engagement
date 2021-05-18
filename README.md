@@ -18,7 +18,7 @@
 - [Fuel Consumption Calculator](https://github.com/cybernobie/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Fuel%20Consumption%20Calculator)
 - [Bill Generation](https://github.com/cybernobie/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Bill%20Generator)
 - [Display Characters](https://github.com/cybernobie/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Display%20Characters)
-- [Highest Percentage](https://github.com/cybernobie/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Highest%20Placement)
+- [Highest Placement](https://github.com/cybernobie/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Highest%20Placement)
 - [Movie Ticket Calculation](https://github.com/cybernobie/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Movie%20Ticket%20Calculation)
 - [Find Season](https://github.com/cybernobie/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Find%20Season)
 - [Lucky Number](https://github.com/cybernobie/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Lucky%20Number)
