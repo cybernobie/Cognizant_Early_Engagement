@@ -28,6 +28,30 @@
 -[ZeeZeeLogin](./Dashboard/SpringBootHandsOns/ZeeZeeLogin/LoginApp)
 
 ## SpringCoreHandsOns
+-[Autowiring](./Dashboard/SpringCoreHandsOns/Autowiring/Autowiring/src/main/java/com/spring/app)
+
+-[Billing Software Application](./Dashboard/SpringCoreHandsOns/Billing%20Software%20Application/ProductBillingApplication)
+
+-[Constructor Injection](./Dashboard/SpringCoreHandsOns/Constructor%20Injection/constructorinjection)
+
+-[CurrencyConverter-Collections](./Dashboard/SpringCoreHandsOns/CurrencyConverter-Collections/CurrencyConverter-XML)
+
+-[Customer-Address Inner Bean](./Dashboard/SpringCoreHandsOns/Customer-Address%20Inner%20Bean/CustomerInnerBean)
+
+-[Customer-Address-Scope](./Dashboard/SpringCoreHandsOns/Customer-Address-Scope/Scope-Customer)
+
+-[DBConfig-SetterBasedInjection](./Dashboard/SpringCoreHandsOns/DBConfig-SetterBasedInjection/DBConfig)
+
+-[EBanking](./Dashboard/SpringCoreHandsOns/EBanking/EBanking)
+
+-[EZEE Transport](./Dashboard/SpringCoreHandsOns/EZEE%20Transport/EEZEETransport)
+
+-[EngineAnalysis](./Dashboard/SpringCoreHandsOns/EngineAnalysis/EngineAnalysis)
+
+-[Passport Service](./Dashboard/SpringCoreHandsOns/Passport%20Service/PassportService)
+
+-[SpringAopDemo](./Dashboard/SpringCoreHandsOns/SpringAopDemo/SpringAopDemo)
+
 
 ## Java Programming Fundamentals and Soft Skills
 
