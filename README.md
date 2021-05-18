@@ -15,6 +15,8 @@
 
 ### Java Programming Language
 
+- [Auditing](./Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Auditing)
+
 - [Fuel Consumption Calculator](https://github.com/cybernobie/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Fuel%20Consumption%20Calculator)
 - [Bill Generation](https://github.com/cybernobie/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Bill%20Generator)
 - [Display Characters](https://github.com/cybernobie/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Display%20Characters)
