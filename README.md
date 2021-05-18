@@ -18,15 +18,19 @@
 - [Auditing](./Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Auditing)
 
 - [Bank Account Details](./Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/BankAccountDetails)
+- [Bill Generation](./Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Bill%20Generator)
+
+- [Display Characters](./Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Display%20Characters)
 
 - [Employee Promotion](./Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Employee%20Promotion)
 
-- [Fuel Consumption Calculator](https://github.com/cybernobie/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Fuel%20Consumption%20Calculator)
-- [Bill Generation](https://github.com/cybernobie/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Bill%20Generator)
-- [Display Characters](https://github.com/cybernobie/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Display%20Characters)
+- [Fruit Basket Estimation](./Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Fruit%20Basket%20Estimation)
+- [Fuel Consumption Calculator](./Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Fuel%20Consumption%20Calculator)
+- [Find Season](https://github.com/cybernobie/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Find%20Season)
+
 - [Highest Placement](https://github.com/cybernobie/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Highest%20Placement)
 - [Movie Ticket Calculation](https://github.com/cybernobie/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Movie%20Ticket%20Calculation)
-- [Find Season](https://github.com/cybernobie/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Find%20Season)
+
 - [Lucky Number](https://github.com/cybernobie/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Lucky%20Number)
 - [List of prime numbers](https://github.com/cybernobie/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/List%20of%20prime%20numbers)
 - [Number Palindrome](https://github.com/cybernobie/Cognizant_Early_Engagement/tree/master/Dashboard/Java%20Programming%20Funcamentals%20and%20Soft%20Skills/Java%20Programming%20Language/Number%20Palindrome)
