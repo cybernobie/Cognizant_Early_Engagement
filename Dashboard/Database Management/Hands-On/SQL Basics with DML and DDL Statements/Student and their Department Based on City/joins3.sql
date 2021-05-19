@@ -1,6 +1,6 @@
-select s.student_name, d.department_name
-from student as s
+select student.student_name, department.department_name
+from student
     inner join department
-    on s.city = "Coimbatore"
-        and s.department_id = d.department_id
-order by s.student_name;
+    on student.city = "Coimbatore"
+        and student.department_id = department.department_id
+order by student.student_name;
