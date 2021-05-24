@@ -1,0 +1,1255 @@
+1.LoginController
+================================================
+package com.cts.cit.controller;
+
+import java.util.Date;
+
+import javax.validation.Valid;
+import javax.websocket.server.PathParam;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.cts.cit.exception.ApplicationException;
+import com.cts.cit.model.CCRepresentative;
+import com.cts.cit.model.Customer;
+import com.cts.cit.model.IssueDetail;
+import com.cts.cit.service.CustomerIssueService;
+
+@Controller
+public class LoginController
+
+{
+
+	@Autowired
+	CustomerIssueService custService;
+
+	@Autowired
+	public LoginController(CustomerIssueService service, Validator validator) {
+		System.out.println("in parametized constr of controller with validator");
+		this.custService = service;
+		this.validator = validator;
+	}
+
+	@Autowired
+	private Validator validator;
+
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String showLoginPage(@ModelAttribute("customer") Customer customer,ModelMap map) {
+		// IssueDetail issueDetail = new IssueDetail();
+		// Type Your Code here
+		map.addAttribute("customer",new Customer());
+		return "login";
+	}
+
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String showCustomerPage( @Valid @ModelAttribute("customer") Customer customer,  BindingResult result)
+			throws ApplicationException
+
+	{// Type Your Code here
+		
+		System.out.println(customer);
+		
+		if (result.hasErrors()) {
+			
+			return "login";
+		}
+		
+		//custService.addCustomerObject(customer);
+		return "customerform";
+	}
+
+	@GetMapping(value="/customerform")
+	public String showCustomerForm() {
+		
+		return "customerform";
+	}
+
+	@RequestMapping(value="/customerform",method = RequestMethod.POST)
+	public ModelAndView showCustomerIssue(ModelMap model, @RequestParam String issueid, @RequestParam  String option) {
+		IssueDetail issueDetail = new IssueDetail();
+
+		ModelAndView modelAndView = new ModelAndView();
+		
+	
+		
+		if(option.equals("ri")){
+			modelAndView.setViewName("raiseissue");
+			return modelAndView;
+		}
+		
+		
+		System.out.println(issueid);
+
+		IssueDetail issue = custService.getIssueDetailById(issueid);
+		
+		System.out.println(issue);
+		model.put("issueobj", issue);
+		//model.put("s","0 value");
+
+		modelAndView.setViewName("customerissue");
+
+		return modelAndView;
+	}
+
+	
+	@RequestMapping(value="/raiseissue")
+	public ModelAndView raiseIssue( @RequestParam  String issueReportDate, @RequestParam String custId,
+			@RequestParam String category, @RequestParam String descr,ModelMap model) {
+		CCRepresentative ccr = new CCRepresentative();
+		IssueDetail issueDetail = new IssueDetail();
+		CCRepresentative ccrToModify = new CCRepresentative();
+		CCRepresentative obj = custService.getAvailableCCR();
+
+		ModelAndView modelAndView = new ModelAndView("issueraised");
+		
+		issueDetail.setCustIssueId(custService.getMaxissueId());
+		
+		issueDetail.setCcRepId(obj.getCcRId());
+		
+		issueDetail.setIssueReportDate((Date) model.get("issueReportDate"));
+		
+		issueDetail.setCustId((String)model.get(custId));
+		
+		issueDetail.setIssueStatus("InProgress");
+		
+		int no = obj.getIssuesInProgress();
+		obj.setIssuesInProgress( no + 1);
+		
+		//custService.addCustomerObject(issueDetail);
+		System.out.println(issueDetail.toString());
+		model.put("obj", issueDetail);
+		modelAndView.setViewName("issueraised");
+		return modelAndView;
+
+	}
+
+}
+
+2.ApplicationException
+=========================================
+package com.cts.cit.exception;
+
+public class ApplicationException extends Exception {
+	private static final long serialVersionUID = 1L;
+	
+	public ApplicationException() {
+		super();
+	}	
+	public ApplicationException(final String message) {
+		super(message);
+		
+	}
+}
+
+3.ExceptionHandlerControllerAdvice
+=====================================================
+package com.cts.cit.exception;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.http.HttpStatus;
+//import org.springframework.http.HttpStatus;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
+//import org.springframework.web.bind.annotation.ExceptionHandler;
+//import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.servlet.ModelAndView;
+
+@ControllerAdvice
+public class ExceptionHandlerControllerAdvice {
+	
+	@ExceptionHandler(ApplicationException.class)
+
+	public String handleException(ApplicationException error, Model model) {
+		model.addAttribute("msg", error.getMessage());
+		return "error1";
+	}	
+		
+	}
+
+4.CCRepresentative
+===============================================
+package com.cts.cit.model;
+
+//CustomerCareRepresentative
+public class CCRepresentative {
+
+	String ccRId;
+	String ccrName;
+	String ccrAddress;
+	String ccrPhone;
+	String ccrEMail;
+	int issuesInProgress;
+	String issueIds;
+	
+	public CCRepresentative() {
+		super();
+	}
+
+	public CCRepresentative(String ccRId, String ccrName, String ccrAddress, String ccrPhone, String ccrEMail,
+			int issuesInProgress, String issueIds) {
+		super();
+		this.ccRId = ccRId;
+		this.ccrName = ccrName;
+		this.ccrAddress = ccrAddress;
+		this.ccrPhone = ccrPhone;
+		this.ccrEMail = ccrEMail;
+		this.issuesInProgress = issuesInProgress;
+		this.issueIds = issueIds;
+	}
+
+	public String getCcRId() {
+		return ccRId;
+	}
+
+	public void setCcRId(String ccRId) {
+		this.ccRId = ccRId;
+	}
+
+	public String getCcrName() {
+		return ccrName;
+	}
+
+	public void setCcrName(String ccrName) {
+		this.ccrName = ccrName;
+	}
+
+	public String getCcrAddress() {
+		return ccrAddress;
+	}
+
+	public void setCcrAddress(String ccrAddress) {
+		this.ccrAddress = ccrAddress;
+	}
+
+	public String getCcrPhone() {
+		return ccrPhone;
+	}
+
+	public void setCcrPhone(String ccrPhone) {
+		this.ccrPhone = ccrPhone;
+	}
+
+	public String getCcrEMail() {
+		return ccrEMail;
+	}
+
+	public void setCcrEMail(String ccrEMail) {
+		this.ccrEMail = ccrEMail;
+	}
+
+	public int getIssuesInProgress() {
+		return issuesInProgress;
+	}
+
+	public void setIssuesInProgress(int issuesInProgress) {
+		this.issuesInProgress = issuesInProgress;
+	}
+
+	public String getIssueIds() {
+		return issueIds;
+	}
+
+	public void setIssueIds(String issueIds) {
+		this.issueIds = issueIds;
+	}
+
+	@Override
+	public String toString() {
+		return "CCRepresentative [ccRId=" + ccRId + ", ccrName=" + ccrName + ", ccrAddress=" + ccrAddress
+				+ ", ccrPhone=" + ccrPhone + ", ccrEMail=" + ccrEMail + ", issuesInProgress=" + issuesInProgress
+				+ ", issueIds=" + issueIds + "]";
+	}	
+}
+
+5.Customer
+=============================================
+package com.cts.cit.model;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+public class Customer {
+	
+	@NotBlank(message="Customer Id is required")
+	String custId;
+	@NotBlank(message="Customer Name is required")
+	String custName;
+	@NotBlank(message="Customer Address is required")
+	String custAddress;
+	@Pattern(regexp="([7-9]{1}[0-9]{9})",message="Mobile Number should be 10 digits and starting with digit 7/8/9")
+	String custPhone;
+	@NotBlank(message="LoginId is required")
+	String loginId;
+	@NotBlank(message="password is required")
+	String password;
+	
+	public Customer() {
+		super();
+	}
+
+	public Customer(String custId, String custName, String custAddress, String custPhone, String loginId,
+			String password) {
+		super();
+		this.custId = custId;
+		this.custName = custName;
+		this.custAddress = custAddress;
+		this.custPhone = custPhone;
+		this.loginId = loginId;
+		this.password = password;
+	}
+
+	public String getCustId() {
+		return custId;
+	}
+
+	public void setCustId(String custId) {
+		this.custId = custId;
+	}
+
+	public String getCustName() {
+		return custName;
+	}
+
+	public void setCustName(String custName) {
+		this.custName = custName;
+	}
+
+	public String getCustAddress() {
+		return custAddress;
+	}
+
+	public void setCustAddress(String custAddress) {
+		this.custAddress = custAddress;
+	}
+
+	public String getCustPhone() {
+		return custPhone;
+	}
+
+	public void setCustPhone(String custPhone) {
+		this.custPhone = custPhone;
+	}
+
+	public String getLoginId() {
+		return loginId;
+	}
+
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [custId=" + custId + ", custName=" + custName + ", custAddress=" + custAddress + ", custPhone="
+				+ custPhone + ", loginId=" + loginId + ", password=" + password + "]";
+	}		
+}
+
+6.IssueDetail
+==========================================
+package com.cts.cit.model;
+
+import java.util.Date;
+
+public class IssueDetail {
+	
+	String custIssueId;
+	Date issueReportDate;
+	String custId;
+	String category; //Complaint - Feedback - Suggestion
+	String description;
+	String issueStatus;//InProgress;Closed;Open
+	String ccRepId; // Customer Care Representative Id
+	
+	public IssueDetail() {
+		super();
+	}
+
+	public IssueDetail(String custIssueId, Date issueReportDate, String custId, String category, String description,
+			String issueStatus, String ccRepId) {
+		super();
+		this.custIssueId = custIssueId;
+		this.issueReportDate = issueReportDate;
+		this.custId = custId;
+		this.category = category;
+		this.description = description;
+		this.issueStatus = issueStatus;
+		this.ccRepId = ccRepId;
+	}
+
+	public String getCustIssueId() {
+		return custIssueId;
+	}
+
+	public void setCustIssueId(String custIssueId) {
+		this.custIssueId = custIssueId;
+	}
+
+	public Date getIssueReportDate() {
+		return issueReportDate;
+	}
+
+	public void setIssueReportDate(Date issueReportDate) {
+		this.issueReportDate = issueReportDate;
+	}
+
+	public String getCustId() {
+		return custId;
+	}
+
+	public void setCustId(String custId) {
+		this.custId = custId;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getIssueStatus() {
+		return issueStatus;
+	}
+
+	public void setIssueStatus(String issueStatus) {
+		this.issueStatus = issueStatus;
+	}
+
+	public String getCcRepId() {
+		return ccRepId;
+	}
+
+	public void setCcRepId(String ccRepId) {
+		this.ccRepId = ccRepId;
+	}
+
+	@Override
+	public String toString() {
+		return "IssueDetail [custIssueId=" + custIssueId + ", issueReportDate=" + issueReportDate + ", custId=" + custId
+				+ ", category=" + category + ", description=" + description + ", issueStatus=" + issueStatus
+				+ ", ccRepId=" + ccRepId + "]";
+	}	
+	
+}
+
+7.CustomerIssueService
+=====================================
+package com.cts.cit.service;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.NoSuchElementException;
+
+import org.springframework.stereotype.Service;
+
+
+import com.cts.cit.model.CCRepresentative;
+import com.cts.cit.model.Customer;
+import com.cts.cit.model.IssueDetail;
+
+@Service
+public class CustomerIssueService {
+
+	public static List <IssueDetail> issuesList = new ArrayList<IssueDetail>();
+	public static List <CCRepresentative> ccrList = new ArrayList<CCRepresentative>();
+	public static List <Customer> customerList = new ArrayList<Customer>();
+	
+	
+	public void addCustomerObject(Customer c)
+	{
+		
+		//write code to add valid customer object to collection
+		//c.setCustId();
+	}
+	
+	static 
+	{
+		
+		ccrList.add(new CCRepresentative("CCR1","RakeshSingh","RKPuram","8273838833","rak@gmail.com",4,"I1;I2;I3;I4"));
+		ccrList.add(new CCRepresentative("CCR2","RajeshSingh","RJPuram","8262568833","raj@gmail.com",3,"I5;I6;I7"));
+		ccrList.add(new CCRepresentative("CCR3","UttamSingh","RNPuram","8273873913","utt@gmail.com",2,"I8;I9"));
+		
+		issuesList.add(new IssueDetail("I1",stringToDateConverter("2020-04-12"),"C001","Complaint","M/C Not Working","InProgress","CCR1"));
+		issuesList.add(new IssueDetail("I2",stringToDateConverter("2020-03-13"),"C001","Complaint","Mixie Not Working","InProgress","CCR1"));
+		issuesList.add(new IssueDetail("I3",stringToDateConverter("2020-02-14"),"C001","Complaint","Fridge Not Working","InProgress","CCR1"));
+		issuesList.add(new IssueDetail("I4",stringToDateConverter("2020-01-15"),"C002","Complaint","TV Not Working","InProgress","CCR1"));
+		issuesList.add(new IssueDetail("I5",stringToDateConverter("2020-01-16"),"C002","Complaint","Stove Not Working","InProgress","CCR2"));
+		issuesList.add(new IssueDetail("I6",stringToDateConverter("2020-02-17"),"C002","Complaint","M/C Not Working","InProgress","CCR2"));
+		issuesList.add(new IssueDetail("I7",stringToDateConverter("2020-03-17"),"C003","Complaint","Mixie Not Working","InProgress","CCR2"));
+		issuesList.add(new IssueDetail("I8",stringToDateConverter("2020-04-18"),"C003","Complaint","Grinder Not Working","InProgress","CCR3"));
+		issuesList.add(new IssueDetail("I9",stringToDateConverter("2020-05-19"),"C003","Complaint","Fridge Not Working","InProgress","CCR3"));
+		
+	
+	}
+	// Get the First CCR in the List who has least number of issues being handled by him/her
+	
+	public CCRepresentative getAvailableCCR()
+	{
+
+		CCRepresentative ccrByMinIssues = null; 
+
+		//Type Your Code here
+		List<Integer> list = new ArrayList<Integer>();
+		
+		for(CCRepresentative obj: ccrList)
+		{
+			 list.add(obj.getIssuesInProgress());
+			
+		}
+		
+		Collections.sort(list);
+		int min = list.get(0);
+		
+		for(CCRepresentative obj: ccrList)
+		{
+			 if(min == obj.getIssuesInProgress())
+				 ccrByMinIssues = obj;
+			
+		}
+	  		return ccrByMinIssues;
+
+	}
+	
+	
+	public CCRepresentative getCCRById(String ccrId) {
+		CCRepresentative ccRep = new CCRepresentative();
+
+		//Type Your Code here
+		for (CCRepresentative ccRe : ccrList) {
+			if(ccRe.getCcRId().equals(ccrId)){
+				return ccRe;
+			}
+		}
+		
+		return null;
+	}
+	public IssueDetail getIssueDetailById(String issueId)
+	{
+		IssueDetail issueDetail = new IssueDetail();
+		
+		//Type Your Code here
+		
+		//issueDetail.getCustIssueId();
+		
+		for (IssueDetail issue : issuesList) {
+			if(issue.getCustIssueId().equals(issueId)){
+				return issue;
+			}
+		}
+		
+		return null;
+	}
+	///******************************************
+	public String getMaxissueId()
+	{
+		String maxIssueId = "";
+		return "I"+(issuesList.size()+1);	  
+		//return null;
+	  		
+	}
+	
+	public boolean validateDateOfReport(String dateOfRepo)
+	{
+		boolean flag = false;
+		//Type Your Code here
+		return flag;
+	}
+	//NOT A BUSINESS FUNCTION BUT UTILITY FUNCTION
+	public static java.util.Date stringToDateConverter(String stringDate) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		dateFormat.setLenient(false);
+		try {
+			return dateFormat.parse(stringDate);
+		} catch (ParseException pe) {
+			return null;
+		}
+	}
+	
+}
+
+8.Skeleton Validator
+========================================
+package com.cts.cit.skeleton;
+
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ * @author 222805
+ * 
+ * This class is used to verify if the Code Skeleton is intact and not modified by participants thereby ensuring smooth auto evaluation
+ *
+ */
+public class SkeletonValidator {
+
+	public SkeletonValidator() {
+		validateClassName("com.cts.cit.CustomerIssueTrackerApp");
+		
+		validateClassName("com.cts.cit.controller.LoginController");
+		validateClassName("com.cts.cit.model.CCRepresentative");
+		validateClassName("com.cts.cit.model.Customer");
+		validateClassName("com.cts.cit.model.IssueDetail");
+		
+		validateClassName("com.cts.cit.service.CustomerIssueService");
+		
+		
+		
+		
+		validateMethodSignature("showLoginPage:String","com.cts.cit.controller.LoginController");
+		validateMethodSignature("showCustomerPage:String","com.cts.cit.controller.LoginController");
+		validateMethodSignature("showCustomerForm:String","com.cts.cit.controller.LoginController");
+		validateMethodSignature("showCustomerIssue:ModelAndView","com.cts.cit.controller.LoginController");
+		validateMethodSignature("raiseIssue:ModelAndView","com.cts.cit.controller.LoginController");
+		
+		validateMethodSignature("getAvailableCCR:CCRepresentative","com.cts.cit.service.CustomerIssueService");
+			validateMethodSignature("getCCRById:CCRepresentative","com.cts.cit.service.CustomerIssueService");
+		validateMethodSignature("getIssueDetailById:IssueDetail","com.cts.cit.service.CustomerIssueService");
+		validateMethodSignature("getMaxissueId:String","com.cts.cit.service.CustomerIssueService");
+
+	}
+
+	private static final Logger LOG = Logger.getLogger("SkeletonValidator");
+
+	protected final boolean validateClassName(String className) {
+
+		boolean iscorrect = false;
+		try {
+			Class.forName(className);
+			iscorrect = true;
+			LOG.info("Class Name " + className + " is correct");
+
+		} catch (ClassNotFoundException e) {
+			LOG.log(Level.SEVERE, "You have changed either the " + "class name/package. Use the correct package "
+					+ "and class name as provided in the skeleton");
+
+		} catch (Exception e) {
+			LOG.log(Level.SEVERE,
+					"There is an error in validating the " + "Class Name. Please manually verify that the "
+							+ "Class name is same as skeleton before uploading");
+		}
+		return iscorrect;
+
+	}
+
+	protected final void validateMethodSignature(String methodWithExcptn, String className) {
+		Class cls = null;
+		try {
+
+			String[] actualmethods = methodWithExcptn.split(",");
+			boolean errorFlag = false;
+			String[] methodSignature;
+			String methodName = null;
+			String returnType = null;
+
+			for (String singleMethod : actualmethods) {
+				boolean foundMethod = false;
+				methodSignature = singleMethod.split(":");
+
+				methodName = methodSignature[0];
+				returnType = methodSignature[1];
+				cls = Class.forName(className);
+				Method[] methods = cls.getMethods();
+				for (Method findMethod : methods) {
+					if (methodName.equals(findMethod.getName())) {
+						foundMethod = true;
+						if (!(findMethod.getReturnType().getSimpleName().equals(returnType))) {
+							errorFlag = true;
+							LOG.log(Level.SEVERE, " You have changed the " + "return type in '" + methodName
+									+ "' method. Please stick to the " + "skeleton provided");
+
+						} else {
+							LOG.info("Method signature of " + methodName + " is valid");
+						}
+
+					}
+				}
+				if (!foundMethod) {
+					errorFlag = true;
+					LOG.log(Level.SEVERE, " Unable to find the given public method " + methodName
+							+ ". Do not change the " + "given public method name. " + "Verify it with the skeleton");
+				}
+
+			}
+			if (!errorFlag) {
+				LOG.info("Method signature is valid");
+			}
+
+		} catch (Exception e) {
+			LOG.log(Level.SEVERE,
+					" There is an error in validating the " + "method structure. Please manually verify that the "
+							+ "Method signature is same as the skeleton before uploading");
+		}
+	}
+
+}
+
+9. CustomerIssueTrackerApp
+=============================================
+package com.cts.cit;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.cts.cit.skeleton.SkeletonValidator;
+
+
+@SpringBootApplication
+public class CustomerIssueTrackerApp {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		SpringApplication.run(CustomerIssueTrackerApp.class, args);
+		SkeletonValidator skeletonValidator = new SkeletonValidator();
+	}
+
+}
+
+10.application.properties
+======================================================
+# =============================================
+# VIEW RESOLVER
+# =============================================
+
+#add Prefix that gets prepended to view names when building a URL.
+#add Suffix that gets appended to view names when building a URL.
+spring.mvc.view.prefix:/WEB-INF/JSP/
+spring.mvc.view.suffix:.jsp
+logging.level.org.springframework.web: DEBUG
+server.port = 8080
+
+11.message_in.properties
+=============================================
+label.password        = Password
+label.submit          = Login
+label.titleLogin      = Login Page
+label.titleWithdraw	  = Withdraw Page
+label.userName 		  = User Name
+label.amount   		  = Enter Amount to Withdraw
+label.accountNumber   = Account Number
+label.accountType     = Account Type
+label.withdraw		  = Withdraw
+error.invalidPassword = Invalid Password
+error.lowBalance	  = Insufficient Balance
+error.limitExceeded   = Withdraw Limit Exceeded
+msg.success			  = Your Account Balance after withdrawal	
+label.home			  = Home
+
+12.customerform.jsp
+==================================================
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Customer's Page</title>
+</head>
+<body style='margin-left: 30px'>
+	
+		<h2 id="heading3">Welcome To Customer Page</h2>
+		
+		Please Select Your Option: 
+		
+	<form:form method="post" action="customerform">
+			<input type="radio" id="ri" name="option" value="ri">
+			<label for="ri">Raise Issue</label>
+			<input type="radio" id="vi" name="option" value="vi">
+			<label for="vi">View Issue Status Enter Id of Issue You Wish to!</label>
+		
+		
+		
+		<input type="text" id="issueid" name="issueid" />		<br>
+		<button type="submit" id="sub1">Submit</button>
+</form:form>
+			<!-- TYPE YOUR CODE HERE -->
+
+		
+</body>
+
+</html>
+
+13.customerissue.jsp
+===================================================
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Customer Issue Details</title>
+</head>
+<body style='margin-left: 30px'> 
+
+<h3 id="cust">Customer Issue Details</h3>
+
+	<!-- TYPE YOUR CODE HERE -->
+	<table class="table" border="1">
+	<thead>
+		<tr>
+			<td>Issue Id </td>
+			<td>Issue Report Date</td>
+			<td>Customer Id</td>
+			<td>Category</td>
+			<td>Description</td>
+			<td>Status</td>
+			<td>CC Rep Id</td>
+		
+		</tr>
+		<tr>
+		<td>${issueobj.custIssueId}</td>
+		<td>${issueobj.issueReportDate}</td>
+		<td>${issueobj.custId}</td>
+		<td>${issueobj.category}</td>
+		<td>${issueobj.description}</td>
+		<td>${issueobj.issueStatus}</td>
+		<td>${issueobj.ccRepId}</td>
+		</tr>
+	
+	</thead>
+	
+	</table>
+	
+	<a href="/login">Back to Login Page</a><br>
+	<a href="customerform">Back To Customer's Page</a>
+ 
+</body>
+</html>
+
+14.error1.jsp
+================================================
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	
+	<h3 id="errPg">Error Page!!!</h3>
+	${msg}	
+	<br>
+	<br>
+	<a id="login" href="/login">Back to Login Page</a>
+	<br>
+	<a id="fback" href="/customerform">Back To Customer's Page</a>
+	
+	<!-- TYPE YOUR CODE HERE -->
+		</body>
+</html>
+
+15.issueraised.jsp
+======================================
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Following Issue Is Raised</title>
+</head>
+<body>
+
+	<h3 id="cust">Following Issue Is Raised....</h3>
+
+	<!-- TYPE YOUR CODE HERE -->
+	<table border="1">
+		<thead>
+			<tr>
+				<td>Issue Id</td>
+				<td>Issue Report Date</td>
+				<td>Customer Id</td>
+				<td>Category</td>
+				<td>Description</td>
+				<td>Status</td>
+				<td>CC Rep Id</td>
+
+			</tr>
+
+		</thead>
+		<tr>
+			<td>${obj.custIssueId}</td>
+			<td>${obj.issueReportDate}</td>
+			<td>${obj.custId}</td>
+			<td>${obj.category}</td>
+			<td>${obj.description}</td>
+			<td>${obj.issueStatus}</td>
+			<td>${obj.ccRepId}</td>
+
+		</tr>
+
+	</table>
+
+	<a href="/login">Back to Login Page</a>
+	<br>
+	<a href="/customerform">Back To Customer's Page</a>
+
+</body>
+</html>
+
+16.login.jsp
+========================================================
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page session="false"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+.loginform {
+	align-content: center;
+}
+</style>
+<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
+	rel="stylesheet">
+<title>Welcome To Login Page</title>
+</head>
+<body>
+<h2>Welcome To Home Page</h2>
+	<div
+		style="text-align: right; padding: 5px; margin: 5px 0px; background: #ccc;">
+
+	
+
+	<!-- TYPE YOUR CODE HERE -->
+	
+	<form:form class="loginform" method="post" modelAttribute="customer">
+	
+		<table>
+
+
+			<tr>
+				<td>Customer Id:<form:input path="custId" id="custId"
+						name="custId" type="text"/>
+					<form:errors path="custId" cssClass="text-warning"></form:errors></td>
+			</tr>
+
+			<tr>
+				<td>Customer Name:<form:input path="custName" id="custName"
+						name="custName" type="text" /> <form:errors
+						path="custName" cssClass="text-warning"></form:errors></td>
+			</tr>
+			<tr>
+				<td>Customer Address:<form:input path="custAddress"
+						id="custAddress" name="custAddress" type="text"
+						 /> <form:errors path="custAddress"
+						cssClass="text-warning"></form:errors></td>
+			</tr>
+			<tr>
+				<td>Customer Phone:<form:input path="custPhone" id="custPhone"
+						name="custPhone" type="number" /> <form:errors
+						path="custPhone" cssClass="text-warning"></form:errors></td>
+			</tr>
+			<tr>
+				<td>Create new login Id:<form:input path="loginId" id="loginId"
+						name="loginId" type="text"  /> <form:errors
+						path="loginId" cssClass="text-warning"></form:errors></td>
+			</tr>
+			<tr>
+				<td>CreatePassword:<form:input path="password" id="password"
+						name="password" type="password"  /> <form:errors
+						path="password" cssClass="text-warning"></form:errors></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Submit" /></td>
+				<td><input type="reset" value="Clear" /></td>
+			</tr>
+
+		</table>
+
+	</form:form>
+	
+	</div>
+
+
+</body>
+</html>
+
+17.raiseissue.jsp
+==================================
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page session="false"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+.raiseissue {
+	align-content: center;
+}
+</style>
+<title>RAISE ISSUE</title>
+</head>
+<body>
+
+<div class="raiseissue">
+
+	
+
+<form method="post" action="raiseissue" class="raiseissue">
+<label>Issued Id:</label>
+<input type="text" id="custIssueId" name="custIssueId" value="Auto Filled" readonly="true"/>
+<br>
+
+<label>Issue Report Date:Format:yyyy-mm-dd</label>
+<input type="text" id="issueReportDate" name="issueReportDate"/>
+<br>
+
+<label>Customer Id:</label>
+<input type="text" id="custId" name="custId"/>
+<br>
+
+Category:
+<input type="text" id="category" name="category"/>
+<br>
+
+Description:
+<textarea rows="6" cols="20" id="descr" name="descr"></textarea>
+
+<br>
+
+<button type="submit" value="Submit">Submit</button>
+</form>
+
+
+</div>
+	
+	<!-- TYPE YOUR CODE HERE -->
+	
+	
+</body>
+</html>
+
+18.pom.xml
+==========================================
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+  
+  <modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.5.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+  
+  
+  <groupId>CustomerIssueTracker</groupId>
+  <artifactId>CustomerIssueTracker</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>CustomerIssueTracker</name>
+  <description>CustomerIssueTracker</description>
+  
+  	<repositories>
+ 			 <repository>
+   				 <id>jcenter</id>
+   				 <name>bintray</name>
+    			<url>https://jcenter.bintray.com</url>
+  			</repository>
+		</repositories>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+
+		</dependency>
+		<dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-engine</artifactId>
+        <version>5.4.2</version>
+        <scope>test</scope>
+    </dependency>
+		
+		<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+    		<groupId>junit</groupId>
+    		<artifactId>junit</artifactId>
+   			    		<scope>test</scope>
+		</dependency>
+	
+ 
+		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+		<dependency>
+  			<groupId>org.testng</groupId>
+  			<artifactId>testng</artifactId>
+  			<version>7.3.0</version>
+  		<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.4.2</version>
+			<scope>test</scope>
+		</dependency>
+         <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-surefire-provider</artifactId>
+            <version>1.2.0-M1</version>
+        </dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-launcher -->
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-launcher</artifactId>
+			<version>1.5.1</version>
+			<scope>test</scope>
+		</dependency>
+       
+              
+       
+       <!-- https://mvnrepository.com/artifact/org.junit.vintage/junit-vintage-engine -->
+<!-- <dependency>
+    <groupId>org.junit.vintage</groupId>
+    <artifactId>junit-vintage-engine</artifactId>
+    <version>5.7.0</version>
+    <scope>test</scope>
+</dependency>
+        -->
+       
+       
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-commons</artifactId>
+			<version>1.5.1</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver -->
+		
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<suiteXmlFiles>
+						<suiteXmlFile>testSuite.xml</suiteXmlFile>
+					</suiteXmlFiles>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+			</plugin>
+		
+		</plugins>
+	</build>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.22.0</version>
+			</plugin>
+		</plugins>
+	</reporting>
+</project>
+	

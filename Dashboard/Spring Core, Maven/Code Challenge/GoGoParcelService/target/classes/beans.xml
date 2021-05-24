@@ -1,0 +1,29 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<context:property-placeholder location="classpath:charges.properties" />
+	
+	<bean id="courier" class="com.spring.model.Courier" >
+		<property name="chargePerKg" value="${chargePerKg}" />
+		<property name="serviceCharge">
+			<bean class="com.spring.model.ServiceChargeInfo">
+				<property name="locationServiceCharge">
+					<map>
+						<entry key="Coimbatore" value="200.0" />
+						<entry key="Chennai" value="300.0" />
+						<entry key="Madurai" value="150" />
+					</map>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="courierBoObj" class="com.spring.bo.CourierBO" />
+	
+	<bean id="courierSerivce" class="com.spring.service.CourierService">
+		<property name="cBoObj" ref="courierBoObj" />
+	</bean>
+
+</beans>

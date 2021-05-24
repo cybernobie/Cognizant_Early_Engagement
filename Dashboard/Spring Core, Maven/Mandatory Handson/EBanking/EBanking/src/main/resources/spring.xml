@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:accounts.properties"/>
+
+    <bean id="bankAccount" class="com.cts.EBanking.BankAccount" abstract="true"/>
+
+    <bean id="smartBankAccount" class="com.cts.EBanking.SmartBankAccount" parent="bankAccount">
+        <constructor-arg index="0" value="100"/>
+        <constructor-arg index="1" value="Joe"/>
+        <constructor-arg index="2" value="10000"/>
+        <constructor-arg index="3">
+            <list>
+                <value>${current}</value>
+                <value>${recurring}</value>
+                <value>${fixed}</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+</beans>
