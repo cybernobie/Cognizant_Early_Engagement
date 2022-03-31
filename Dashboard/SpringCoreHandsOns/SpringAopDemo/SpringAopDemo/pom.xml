@@ -24,7 +24,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>5.2.6.RELEASE</version>
+			<version>5.3.18</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjrt -->
