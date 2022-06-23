@@ -1,3 +1,3 @@
-select concat(address, ', ', city) as address
+select concat(address, ', ', city) as Address
 from student
-order by concat(address, city) desc;
+order by Address desc;
