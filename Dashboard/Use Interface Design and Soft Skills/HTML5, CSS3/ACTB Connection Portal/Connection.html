@@ -46,8 +46,8 @@
                 <label for="mobile">Mobile Number</label>
             </td>
             <td>
-                <input type="text" id="mobile" name="mobile" placeholder="Enter the Mobile Number" maxlength="10"
-                    max="9999999999" min="7000000000" required>
+                <input type="text" id="mobile" name="mobile" placeholder="Enter the Mobile Number" 
+                    max="10" pattern="[789]{1}[0-9]{9}"  required>
             </td>
         </tr>
         <tr>
@@ -130,7 +130,7 @@
         var _result = document.getElementById("result");
 
         var emailPattern = /^.+@.+\..+$/;
-        var mobilePattern = /^[789]\d{9}$/;
+        
 
         function calculateRent() {
             var name = _name.value;
