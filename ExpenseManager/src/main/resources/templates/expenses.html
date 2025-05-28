@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Expense Manager</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Expense Manager</h1>
+
+        <a th:href="@{/expenses/new}" class="btn btn-success">Add New Expense</a>
+
+        <h2>Expenses List</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="expense : ${expenses}">
+                    <td th:text="${expense.description}">Description</td>
+                    <td th:text="${#numbers.formatDecimal(expense.amount, 1, 'COMMA', 2, 'POINT')}">Amount</td>
+                    <td th:text="${#temporals.format(expense.date, 'yyyy-MM-dd')}">Date</td>
+                    <td th:text="${expense.category}">Category</td>
+                    <td>
+                        <a th:href="@{/expenses/edit/{id}(id=${expense.id})}" class="btn btn-primary">Edit</a>
+                        <a href="#" th:attr="data-id=${expense.id}" class="btn btn-danger btn-delete-expense">Delete</a>
+                    </td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(expenses)}">
+                    <td colspan="5" style="text-align: center;">No expenses found.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Total Expenses</h2>
+        <p class="total-expenses">
+            Total: <span th:text="${#numbers.formatDecimal(totalExpenses, 1, 'COMMA', 2, 'POINT')}">0.00</span>
+        </p>
+    </div>
+
+    <script th:src="@{/js/scripts.js}"></script>
+</body>
+</html>

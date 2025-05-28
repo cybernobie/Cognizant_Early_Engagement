@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:if="${expense.id == null}">Add Expense</title>
+    <title th:if="${expense.id != null}">Edit Expense</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+    <style>
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 th:if="${expense.id == null}">Add New Expense</h1>
+        <h1 th:if="${expense.id != null}">Edit Expense</h1>
+
+        <form th:action="@{/expenses/save}" th:object="${expense}" method="post">
+            <input type="hidden" th:field="*{id}" />
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <input type="text" id="description" th:field="*{description}" class="form-control" />
+                <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="error-message">Error</span>
+            </div>
+
+            <div class="form-group">
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" th:field="*{amount}" class="form-control" step="0.01" />
+                <span th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}" class="error-message">Error</span>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" th:field="*{date}" class="form-control" />
+                <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}" class="error-message">Error</span>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <input type="text" id="category" th:field="*{category}" class="form-control" />
+                <!-- No specific validation for category in this example, but can be added -->
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save Expense</button>
+            <a th:href="@{/expenses}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
